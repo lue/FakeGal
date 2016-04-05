@@ -9,9 +9,10 @@ def get_cutout(ra, dec, angsize, survey, savepng=False, results=True, ids=[], fi
     '''
 
     '''
-    if survey=='GOODSN':
+    if survey=='GOODS-N':
         prefix = 'data/goodsn/'
         files = [['IRAC1', 'GOODS-N_SEDS1/GOODS-N_SEDS1_sci.fits.gz'],
+                 ['IRAC2', 'GOODS-N_SEDS2/GOODS-N_SEDS2_sci.fits.gz'],
                  ['F125W', 'goodsn_3dhst.v4.0.F125W_orig_sci.fits.gz'],
                  ['F140W', 'goodsn_3dhst.v4.0.F140W_orig_sci.fits.gz'],
                  ['F160W', 'goodsn_3dhst.v4.0.F160W_orig_sci.fits.gz'],
