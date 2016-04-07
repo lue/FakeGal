@@ -19,6 +19,17 @@ test = get_cutout(super_catalog['ra'][filt],
                   results=False)
 
 
+filt = (super_catalog['z_survey'] == 3) & (super_catalog['z_spec'] > 0)
+
+test = get_cutout(super_catalog['ra'][filt],
+                  super_catalog['dec'][filt],
+                  3.0,
+                  surveys[3],
+                  savepng=True,
+                  ids=super_catalog['s_id'][filt],
+                  results=False)
+
+
 # plt.imshow(test[0][15], interpolation='nearest', cmap='gray_r')
 # plt.show()
 #

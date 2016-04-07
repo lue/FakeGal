@@ -9,7 +9,25 @@ def get_cutout(ra, dec, angsize, survey, savepng=False, results=True, ids=[], fi
     '''
 
     '''
-    if survey=='GOODS-N':
+    if survey=='AEGIS':
+        prefix = 'data/aegis/'
+        files = [['IRAC1', 'AEGIS_CH1_SEDS/AEGIS_CH1_SEDS_sci.fits.gz'],
+                 ['IRAC2', 'AEGIS_CH2_SEDS/AEGIS_CH2_SEDS_sci.fits.gz'],
+                 ['F125W', 'aegis_3dhst.v4.0.F125W_orig_sci.fits.gz'],
+                 ['F140W', 'aegis_3dhst.v4.0.F140W_orig_sci.fits.gz'],
+                 ['F160W', 'aegis_3dhst.v4.0.F160W_orig_sci.fits.gz'],
+                 ['F606W', 'aegis_3dhst.v4.0.F606W_orig_sci.fits.gz'],
+                 ['F814W', 'aegis_3dhst.v4.0.F814W_orig_sci.fits.gz']]
+    elif survey == 'COSMOS':
+        prefix = 'data/cosmos/'
+        files = [['IRAC1', 'COSMOS_CH1_SEDS/COSMOS_CH1_SEDS_sci.fits.gz'],
+                 ['IRAC2', 'COSMOS_CH2_SEDS/COSMOS_CH2_SEDS_sci.fits.gz'],
+                 ['F125W', 'cosmos_3dhst.v4.0.F125W_orig_sci.fits.gz'],
+                 ['F140W', 'cosmos_3dhst.v4.0.F140W_orig_sci.fits.gz'],
+                 ['F160W', 'cosmos_3dhst.v4.0.F160W_orig_sci.fits.gz'],
+                 ['F606W', 'cosmos_3dhst.v4.0.F606W_orig_sci.fits.gz'],
+                 ['F814W', 'cosmos_3dhst.v4.0.F814W_orig_sci.fits.gz']]
+    elif survey == 'GOODS-N':
         prefix = 'data/goodsn/'
         files = [['IRAC1', 'GOODS-N_SEDS1/GOODS-N_SEDS1_sci.fits.gz'],
                  ['IRAC2', 'GOODS-N_SEDS2/GOODS-N_SEDS2_sci.fits.gz'],
@@ -20,6 +38,26 @@ def get_cutout(ra, dec, angsize, survey, savepng=False, results=True, ids=[], fi
                  ['F606W', 'goodsn_3dhst.v4.0.F606W_orig_sci.fits.gz'],
                  ['F775W', 'goodsn_3dhst.v4.0.F775W_orig_sci.fits.gz'],
                  ['F850LP', 'goodsn_3dhst.v4.0.F850LP_orig_sci.fits.gz']]
+    elif survey=='GOODS-S':
+        prefix = 'data/goodss/'
+        files = [['IRAC1', 'GOODS-S_SEDS1/GOODS-S_SEDS1_sci_sub.fits.gz'],
+                 ['IRAC2', 'GOODS-S_SEDS2/GOODS-S_SEDS2_sci_sub.fits.gz'],
+                 ['F125W', 'goodss_3dhst.v4.0.F125W_orig_sci.fits.gz'],
+                 ['F140W', 'goodss_3dhst.v4.0.F140W_orig_sci.fits.gz'],
+                 ['F160W', 'goodss_3dhst.v4.0.F160W_orig_sci.fits.gz'],
+                 ['F435W', 'goodss_3dhst.v4.0.F435W_orig_sci.fits.gz'],
+                 ['F606W', 'goodss_3dhst.v4.0.F606W_orig_sci.fits.gz'],
+                 ['F775W', 'goodss_3dhst.v4.0.F775W_orig_sci.fits.gz'],
+                 ['F850LP', 'goodss_3dhst.v4.0.F850LP_orig_sci.fits.gz']]
+    elif survey == 'UDS':
+        prefix = 'data/uds/'
+        files = [['IRAC1', 'UDS_SEDS1/UDS_SEDS1_sci.fits.gz'],
+                 ['IRAC2', 'UDS_SEDS2/UDS_SEDS2_sci.fits.gz'],
+                 ['F125W', 'uds_3dhst.v4.0.F125W_orig_sci.fits.gz'],
+                 ['F140W', 'uds_3dhst.v4.0.F140W_orig_sci.fits.gz'],
+                 ['F160W', 'uds_3dhst.v4.0.F160W_orig_sci.fits.gz'],
+                 ['F606W', 'uds_3dhst.v4.0.F606W_orig_sci.fits.gz'],
+                 ['F814W', 'uds_3dhst.v4.0.F775W_orig_sci.fits.gz']]
     else:
         print('ERROR!')
     res = []
