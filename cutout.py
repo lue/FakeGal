@@ -8,6 +8,17 @@ import pyfits as pf
 surveys = ['AEGIS', 'COSMOS', 'GOODS-N', 'GOODS-S', 'UDS']
 super_catalog = np.load("super_catalog.npz")
 
+for i in [0,1,4]:
+    filt = (super_catalog['z_survey'] == i) & (super_catalog['z_spec'] > 0)
+    test = get_cutout(super_catalog['ra'][filt],
+                  super_catalog['dec'][filt],
+                  3.0,
+                  surveys[i],
+                  savepng=True,
+                  ids=super_catalog['s_id'][filt],
+                  results=False)
+
+### GOODS ###
 filt = (super_catalog['z_survey'] == 2) & (super_catalog['z_spec'] > 0)
 
 test = get_cutout(super_catalog['ra'][filt],
