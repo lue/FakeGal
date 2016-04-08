@@ -57,7 +57,7 @@ def get_cutout(ra, dec, angsize, survey, savepng=False, results=True, ids=[], fi
                  ['F140W', 'uds_3dhst.v4.0.F140W_orig_sci.fits.gz'],
                  ['F160W', 'uds_3dhst.v4.0.F160W_orig_sci.fits.gz'],
                  ['F606W', 'uds_3dhst.v4.0.F606W_orig_sci.fits.gz'],
-                 ['F814W', 'uds_3dhst.v4.0.F775W_orig_sci.fits.gz']]
+                 ['F814W', 'uds_3dhst.v4.0.F814W_orig_sci.fits.gz']]
     else:
         print('ERROR!')
     res = []
@@ -74,7 +74,7 @@ def get_cutout(ra, dec, angsize, survey, savepng=False, results=True, ids=[], fi
         sizey = np.abs(1.0 * angsize / 3600 / data[0].header['CD1_1'])/2.0
         output = []
         for j in range(len(ra)):
-            temp = w.all_world2pix(ra[j], dec[j], 1)
+            temp = w.all_world2pix(ra[j], dec[j], 1, quiet=True)
             x = temp[1]  # [0]
             y = temp[0]  # [0]
             img = data[0].data[np.round(x)-sizex:np.round(x)+sizex, np.round(y)-sizey:np.round(y)+sizey]
