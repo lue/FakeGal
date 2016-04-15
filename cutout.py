@@ -8,7 +8,7 @@ import pyfits as pf
 surveys = ['AEGIS', 'COSMOS', 'GOODS-N', 'GOODS-S', 'UDS']
 super_catalog = np.load("super_catalog.npz")
 
-for i in [0,1,4]:
+for i in [4]:
     filt = (super_catalog['z_survey'] == i) & (super_catalog['z_spec'] > 0)
     test = get_cutout(super_catalog['ra'][filt],
                   super_catalog['dec'][filt],
@@ -18,28 +18,21 @@ for i in [0,1,4]:
                   ids=super_catalog['s_id'][filt],
                   results=False)
 
-### GOODS ###
+### FAKE GAL ###
 filt = (super_catalog['z_survey'] == 2) & (super_catalog['z_spec'] > 0)
 
-test = get_cutout(super_catalog['ra'][filt],
-                  super_catalog['dec'][filt],
-                  3.0,
+ra_x = super_catalog['ra'][filt].mean()
+dec_x = super_catalog['dec'][filt].mean()
+
+test = get_cutout([ra_x],
+                  [dec_x],
+                  25.0,
                   surveys[2],
-                  savepng=True,
-                  ids=super_catalog['s_id'][filt],
-                  results=False)
+                  savepng=False,
+                  ids=[99999999],
+                  results=True)
 
-
-filt = (super_catalog['z_survey'] == 3) & (super_catalog['z_spec'] > 0)
-
-test = get_cutout(super_catalog['ra'][filt],
-                  super_catalog['dec'][filt],
-                  3.0,
-                  surveys[3],
-                  savepng=True,
-                  ids=super_catalog['s_id'][filt],
-                  results=False)
-
+np.savez('test.npz', data=test)
 
 # plt.imshow(test[0][15], interpolation='nearest', cmap='gray_r')
 # plt.show()
