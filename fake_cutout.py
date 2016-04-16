@@ -9,7 +9,7 @@ from galroutines.cutout import *
 surveys = ['AEGIS', 'COSMOS', 'GOODS-N', 'GOODS-S', 'UDS']
 super_catalog = np.load("super_catalog.npz")
 
-for i in [2]:
+for i in range(5):
     filt = (super_catalog['z_survey'] == i) & (super_catalog['z_spec'] > 0)
     ra = super_catalog['ra'][filt].mean()
     dec = super_catalog['dec'][filt].mean()

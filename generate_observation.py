@@ -71,7 +71,7 @@ plt.show()
 #         data_f[j, k, :] = temp[:, 1]
 
 # Start generating an observation
-s_id = 4
+s_id = 2
 z = 7.
 n_filts = filters_by_survey(s_id)
 data_f = np.zeros([int(data.shape[0]), int(data.shape[1]), len(n_filts)])
