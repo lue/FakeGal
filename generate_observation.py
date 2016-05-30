@@ -86,7 +86,7 @@ for j in range(data.shape[0]):
         inputs.append([lam, flam, s_id])
 print("Run...")
 p = Pool(7)
-res = (p.map(get_measurements_m, inputs))
+res = (p.map(get_measurements_m2, inputs))
 l = 0
 print('Disassembling...')
 for j in range(data.shape[0]):

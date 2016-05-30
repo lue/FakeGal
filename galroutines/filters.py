@@ -99,3 +99,21 @@ def get_measurements_m(inp):
         j+=1
         #         print f_lam, f_flam
     return res
+
+
+def get_measurements_m2(inp):
+    lam, flam, s_id = inp[0], inp[1], inp[2]
+    filters_list = filters_by_survey(s_id)
+    #     print filters_list
+    res = np.zeros([len(filters_list),2])
+    j=0
+    for i in filters_list:
+        #         print i
+        filt, _ = get_filter_by_id(i)
+        flam_temp = np.interp(filt[:,1], lam, flam, left=0, right=0)
+        f_flam = np.trapz(flam_temp*filt[:, 2], filt[:,1])
+        f_lam = np.trapz(filt[:,1]*filt[:, 2], filt[:,1]) / np.trapz(filt[:, 2], filt[:,1])
+        res[j,:] = f_lam, f_flam
+        j+=1
+        #         print f_lam, f_flam
+    return res
