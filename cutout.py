@@ -3,7 +3,7 @@ import scipy as sp
 import matplotlib.pyplot as plt
 
 import pyfits as pf
-
+from galroutines.cutout import *
 
 surveys = ['AEGIS', 'COSMOS', 'GOODS-N', 'GOODS-S', 'UDS']
 super_catalog = np.load("super_catalog.npz")
