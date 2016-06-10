@@ -85,7 +85,7 @@ def get_cutout(ra, dec, angsize, survey, savepng=False, results=True, ids=[], fi
                 ax = plt.Axes(fig, [0., 0., 1., 1.])
                 ax.set_axis_off()
                 fig.add_axes(ax)
-                ax.imshow(img, interpolation='nearest', cmap='cubehelix_r', aspect='normal')
+                ax.imshow(img, interpolation='nearest', cmap='gray_r', aspect='normal')
                 plt.savefig('output/'+survey+'/%06d_%2.2f_'%(ids[j], angsize)+files[i][0]+'.png')
         if results:
             res.append(output)
